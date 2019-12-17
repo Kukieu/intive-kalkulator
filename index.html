@@ -1,26 +1,72 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html class="no-js">
-<!--<![endif]-->
+<html lang="pl-PL">
 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Material Design for Bootstrap fonts and icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+
+    <!-- Material Design for Bootstrap CSS -->
+    <link rel="stylesheet"
+        href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
+        integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Kalkulator</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 
 <body>
-    <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"
+        integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"
+        integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9"
+        crossorigin="anonymous"></script>
+    <script>$(document).ready(function () { $('body').bootstrapMaterialDesign(); });</script>
 
-    <script src="" async defer></script>
+    <div class="calculator card">
+
+        <input type="text" class="calculator-screen z-depth-1" value="" disabled />
+
+        <div class="calculator-keys">
+
+            <button type="button" class="border operator btn btn-info" value="+">+</button>
+            <button type="button" class="border operator btn btn-info" value="-">-</button>
+            <button type="button" class="border operator btn btn-info" value="*">&times;</button>
+            <button type="button" class="border operator btn btn-info" value="/">&divide;</button>
+
+            <button type="button" value="7" class="border btn btn-dark waves-effect ">7</button>
+            <button type="button" value="8" class="border btn btn-dark waves-effect">8</button>
+            <button type="button" value="9" class="border btn btn-dark waves-effect">9</button>
+
+
+            <button type="button" value="4" class="border btn btn-dark waves-effect">4</button>
+            <button type="button" value="5" class="border btn btn-dark waves-effect">5</button>
+            <button type="button" value="6" class="border btn btn-dark waves-effect">6</button>
+
+
+            <button type="button" value="1" class="border btn btn-dark waves-effect">1</button>
+            <button type="button" value="2" class="border btn btn-dark waves-effect">2</button>
+            <button type="button" value="3" class="border btn btn-dark waves-effect">3</button>
+
+
+            <button type="button" value="0" class="border btn btn-dark waves-effect">0</button>
+            <button type="button" class="border decimal function btn btn-secondary" value=",">,</button>
+            <button type="button" class="border all-clear function btn btn-danger btn-sm" value="clear-all">C</button>
+            <button type="button" class="border all-clear function btn btn-danger btn-sm" value="clear-last">CE</button>
+
+            <button type="button" class="border equal-sign operator btn btn-default" value="=">=</button>
+
+        </div>
+    </div>
 </body>
 
 </html>

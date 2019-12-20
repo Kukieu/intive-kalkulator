@@ -18,6 +18,24 @@ keys.addEventListener('click', (event) => {
         document.getElementById("textarea").value += target.value;
     }
     else if (target.classList.contains('equal-sign')) {
+
+        switch (operator) {
+            case '+':
+                alert('+');
+                break;
+            case '-':
+                alert('-');
+                break;
+            case '*':
+                alert('*');
+                break;
+            case '/':
+                alert('/');
+                break;
+            default:
+                alert("I don't know such values");
+        }
+
         secondNumber = document.getElementById("textarea").value;
         // console.log(firstNumber);
         result = Number(firstNumber) + Number(secondNumber);

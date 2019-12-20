@@ -1,7 +1,7 @@
 let firstNumber = 0;
 let secondNumber = 0;
-let result = 0;
 let operator;
+let operationChosen = false;
 
 const keys = document.querySelector('.calculator-keys');
 
@@ -24,26 +24,28 @@ keys.addEventListener('click', (event) => {
         switch (operator) {
             case '+':
                 // result = Number(firstNumber) + Number(secondNumber);
-                document.getElementById("textarea").value = Number(firstNumber) + Number(secondNumber);;
+                document.getElementById("textarea").value = Number(firstNumber) + Number(secondNumber);
                 break;
             case '-':
-                alert('-');
+                document.getElementById("textarea").value = Number(firstNumber) - Number(secondNumber);
                 break;
             case '*':
-                alert('*');
+                document.getElementById("textarea").value = Number(firstNumber) * Number(secondNumber);
                 break;
             case '/':
-                alert('/');
+                document.getElementById("textarea").value = Number(firstNumber) / Number(secondNumber);
                 break;
             default:
                 alert("I don't know such values");
         }
-
-
-        // console.log(firstNumber);
-        // result = Number(firstNumber) + Number(secondNumber);
-        // console.log("TCL: result", result)
-        // String(result);
-        // document.getElementById("textarea").value = result;
+    }
+    else if (target.classList.contains('clear-all')) {
+        document.getElementById("textarea").value = " ";
+    }
+    else if (target.classList.contains('clear-last')) {
+        let textareaValue = document.getElementById("textarea").value;
+        let newValue = textareaValue.slice(0, textareaValue.length - 1);
+        document.getElementById("textarea").value = newValue;
+        // console.log(temp2);
     }
 })

@@ -19,9 +19,12 @@ keys.addEventListener('click', (event) => {
     }
     else if (target.classList.contains('equal-sign')) {
 
+        secondNumber = document.getElementById("textarea").value;
+
         switch (operator) {
             case '+':
-                alert('+');
+                // result = Number(firstNumber) + Number(secondNumber);
+                document.getElementById("textarea").value = Number(firstNumber) + Number(secondNumber);;
                 break;
             case '-':
                 alert('-');
@@ -36,11 +39,11 @@ keys.addEventListener('click', (event) => {
                 alert("I don't know such values");
         }
 
-        secondNumber = document.getElementById("textarea").value;
+
         // console.log(firstNumber);
-        result = Number(firstNumber) + Number(secondNumber);
-        console.log("TCL: result", result)
-        String(result);
-        document.getElementById("textarea").value = result;
+        // result = Number(firstNumber) + Number(secondNumber);
+        // console.log("TCL: result", result)
+        // String(result);
+        // document.getElementById("textarea").value = result;
     }
 })

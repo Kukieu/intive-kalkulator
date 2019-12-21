@@ -8,14 +8,20 @@ const keys = document.querySelector('.calculator-keys');
 keys.addEventListener('click', (event) => {
     const { target } = event;
     if (target.classList.contains('operator')) {
+        operationChosen = true;
         // document.getElementById("textarea").value += target.value;
         firstNumber = document.getElementById("textarea").value;
-        document.getElementById("textarea").value = "";
         operator = target.value;
-        console.log(operator);
+        // console.log(operator);
     }
     else if (target.classList.contains('number')) {
-        document.getElementById("textarea").value += target.value;
+        if (operationChosen === false) {
+            document.getElementById("textarea").value += target.value;
+        } else {
+            operationChosen = false;
+            document.getElementById("textarea").value = "";
+            document.getElementById("textarea").value += target.value;
+        }
     }
     else if (target.classList.contains('equal-sign')) {
 
@@ -36,7 +42,7 @@ keys.addEventListener('click', (event) => {
                 document.getElementById("textarea").value = Number(firstNumber) / Number(secondNumber);
                 break;
             default:
-                alert("I don't know such values");
+                alert("ERROR - something went wrong");
         }
     }
     else if (target.classList.contains('clear-all')) {

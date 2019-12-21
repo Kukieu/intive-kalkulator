@@ -20,23 +20,8 @@
 </head>
 
 <body>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"
-        integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U"
-        crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"
-        integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9"
-        crossorigin="anonymous"></script>
-    <script>$(document).ready(function () { $('body').bootstrapMaterialDesign(); });</script> -->
-
     <div class="calculator card">
-
         <input id="textarea" type="text" class="calculator-screen z-depth-1" value="" disabled />
-
         <div class="calculator-keys">
 
             <button type="button" class="border operator btn btn-info" value="+">+</button>
@@ -44,27 +29,17 @@
             <button type="button" class="border operator btn btn-info" value="*">&times;</button>
             <button type="button" class="border operator btn btn-info" value="/">&divide;</button>
 
-            <button type="button" value="7" class="number border btn btn-dark waves-effect ">7</button>
-            <button type="button" value="8" class="number border btn btn-dark waves-effect">8</button>
-            <button type="button" value="9" class="number border btn btn-dark waves-effect">9</button>
+            <script>
+                let keysArr = [7, 8, 9, 4, 5, 6, 1, 2, 3, 0, "."];
 
+                for (let i = 0; i <= keysArr.length - 1; i++) {
+                    document.write('<button type="button" class="number border btn btn-dark waves-effect" value="' + keysArr[i] + '">' + keysArr[i]);
+                }
+            </script>
 
-            <button type="button" value="4" class="number border btn btn-dark waves-effect">4</button>
-            <button type="button" value="5" class="number border btn btn-dark waves-effect">5</button>
-            <button type="button" value="6" class="number border btn btn-dark waves-effect">6</button>
-
-
-            <button type="button" value="1" class="number border btn btn-dark waves-effect">1</button>
-            <button type="button" value="2" class="number border btn btn-dark waves-effect">2</button>
-            <button type="button" value="3" class="number border btn btn-dark waves-effect">3</button>
-
-
-            <button type="button" value="0" class="number border btn btn-dark waves-effect">0</button>
-            <button type="button" class="border number decimal function btn btn-secondary" value=".">,</button>
             <button type="button" class="border clear-all function btn btn-danger btn-sm" value="clear-all">C</button>
             <button type="button" class="border clear-last function btn btn-danger btn-sm"
                 value="clear-last">CE</button>
-
             <button type="button" class="border equal-sign btn btn-default" value="=">=</button>
 
         </div>

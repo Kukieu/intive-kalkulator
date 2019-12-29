@@ -17,6 +17,7 @@ function numberHandler(target) {
         document.getElementById('textarea').value = '';
         document.getElementById('textarea').value += target.value;
     }
+    checkForDot();
 }
 
 function equalSignHandler() {
@@ -38,14 +39,25 @@ function equalSignHandler() {
         default:
             alert('ERROR - something went wrong');
     }
+    checkForDot();
 }
 
 function clearAllHandler() {
     document.getElementById('textarea').value = '';
+    document.getElementById('.').disabled = false;
 }
 
 function clearLastHandler() {
     let textareaValue = document.getElementById('textarea').value;
     let newValue = textareaValue.slice(0, textareaValue.length - 1);
     document.getElementById('textarea').value = newValue;
+    checkForDot();
+}
+
+function checkForDot() {
+    if (document.getElementById('textarea').value.includes('.')) {
+        document.getElementById('.').disabled = true;
+    } else {
+        document.getElementById('.').disabled = false;
+    }
 }

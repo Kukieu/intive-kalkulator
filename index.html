@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="styles.css">
     <script src="js/functions.js" defer></script>
     <script src="js/main.js" defer></script>
-    <script src="js/automaticTests.js" defer></script>
+    <!-- <script src="js/automaticTests.js" defer></script> -->
 </head>
 
 <body>
@@ -30,15 +30,22 @@
             <button type="button" class="border operator btn btn-info" id="-" value="-">-</button>
             <button type="button" class="border operator btn btn-info" id="*" value="*">&times;</button>
             <button type="button" class="border operator btn btn-info" id="/" value="/">&divide;</button>
+            <button type="button" class="border operator btn btn-info" id="/" value="/">&divide;</button>
+            <button type="button" class="border exp-and-root btn btn-info" id="exponentiation"
+                value="sqrt(">x<sup>y</sup></button>
+            <button type="button" class="border exp-and-root btn btn-info" id="roots" value="pow(">&#8730;</button>
 
             <script>
-                let keysArr = [7, 8, 9, 4, 5, 6, 1, 2, 3, 0, "."];
+                let keysArr = [7, 8, 9, 4, 5, 6, 1, 2, 3, 0];
 
                 for (let i = 0; i <= keysArr.length - 1; i++) {
                     document.write('<button type="button" class="number border btn btn-dark waves-effect" id="' + keysArr[i] + '" value="' + keysArr[i] + '">' + keysArr[i]);
                 }
             </script>
 
+            <button type="button" class="border bracket btn btn-dark" id="(" value="(">(</button>
+            <button type="button" class="border bracket btn btn-dark" id=")" value=")">)</button>
+            <button type="button" class="border operator btn btn-dark" id="." value=".">.</button>
             <button type="button" class="border clear-all function btn btn-danger btn-sm" id="clear-all"
                 value="clear-all">C</button>
             <button type="button" class="border clear-last function btn btn-danger btn-sm" id="clear-last"

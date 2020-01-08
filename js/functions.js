@@ -1,63 +1,83 @@
-let firstNumber = 0;
-let secondNumber = 0;
-let operator;
-let operationChosen = false;
+let screen = document.getElementById('textarea');
+const REoperator = /^([+]|[-]|[*]|[/]|[exponentiation]|[roots])$/g;
 
 function operatorHandler(target) {
-    operationChosen = true;
-    firstNumber = document.getElementById('textarea').value;
-    operator = target.value;
+    let inputArr = screen.value.split('');
+    console.log(inputArr);
+    const lastValue = inputArr[inputArr.length - 1];
+
+    if (screen.value === '' || lastValue.match(REoperator) !== null || lastValue[lastValue.length - 1] === '.') {
+        return;
+    } else {
+        screen.value += ' ' + target.value + ' ';
+    }
+}
+
+function bracketHandler(target) {
+    screen.value += ' ' + target.value;
+}
+
+function expAndRootHandler(target) {
+    if (target.value === 'sqrt(' || target.value === 'pow(') {
+        // screen.value = '';
+        screen = target.value + screen.value + ')';
+    }
 }
 
 function numberHandler(target) {
-    if (operationChosen === false) {
-        document.getElementById('textarea').value += target.value;
-    } else {
-        operationChosen = false;
-        document.getElementById('textarea').value = '';
-        document.getElementById('textarea').value += target.value;
-    }
-    checkForDot();
+
+    // console.log(tempArray);
+    // tempArray.push(target.value);
+
+
+    // console.log(lastValue);
+
+    // screen.value += target.value;
+
+    screen.value += target.value;
+
+    // tempArray.push(target.value);
+
+    // if (lastValue !== '+') {
+    //     tempArray.push(target.value);
+    // }
+    // if (target.value !== tempArray[tempArray.length - 1]) {
+
+    // }
+
+    // tempArray.join(" ");
+    // screen.value = tempArray.join("");
+
+    // console.log(tempArray);
+    // screen.value += target.value;
+    // console.log(target.value);
 }
 
-function equalSignHandler() {
-    secondNumber = document.getElementById('textarea').value;
+function equalSignHandler(target) {
+    let equalSignArray = screen.value.split(' ');
+    screen.value = '';
 
-    switch (operator) {
-        case '+':
-            document.getElementById('textarea').value = Number(firstNumber) + Number(secondNumber);
-            break;
-        case '-':
-            document.getElementById('textarea').value = Number(firstNumber) - Number(secondNumber);
-            break;
-        case '*':
-            document.getElementById('textarea').value = Number(firstNumber) * Number(secondNumber);
-            break;
-        case '/':
-            document.getElementById('textarea').value = Number(firstNumber) / Number(secondNumber);
-            break;
-        default:
-            alert('ERROR - something went wrong');
+    if (equalSignArray[0] === target.classList.contains('number') && equalSignArray[1] === target.classList.contains('number')) {
+        equalSignArray.join('');
     }
-    checkForDot();
+
+    console.log(equalSignArray.indexOf('('));
+
+    console.log(equalSignArray);
+    if (equalSignArray.includes('*')) {
+        console.log(Number(equalSignArray[0]) * Number(equalSignArray[2]))
+    }
+
 }
 
 function clearAllHandler() {
-    document.getElementById('textarea').value = '';
-    document.getElementById('.').disabled = false;
+    screen.value = '';
+    equalSignArray = [];
+    inputArr = [];
 }
 
 function clearLastHandler() {
-    let textareaValue = document.getElementById('textarea').value;
+    let textareaValue = screen.value;
     let newValue = textareaValue.slice(0, textareaValue.length - 1);
-    document.getElementById('textarea').value = newValue;
-    checkForDot();
-}
-
-function checkForDot() {
-    if (document.getElementById('textarea').value.includes('.')) {
-        document.getElementById('.').disabled = true;
-    } else {
-        document.getElementById('.').disabled = false;
-    }
+    screen.value = newValue;
 }

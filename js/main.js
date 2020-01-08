@@ -9,12 +9,18 @@ keys.addEventListener('click', (event) => {
         numberHandler(target);
     }
     else if (target.classList.contains('equal-sign')) {
-        equalSignHandler();
+        equalSignHandler(target);
     }
     else if (target.classList.contains('clear-all')) {
         clearAllHandler();
     }
     else if (target.classList.contains('clear-last')) {
         clearLastHandler();
+    }
+    else if (target.classList.contains('bracket')) {
+        bracketHandler(target);
+    }
+    else if (target.classList.contains('exp-and-root')) {
+        expAndRootHandler(target);
     }
 })

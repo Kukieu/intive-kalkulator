@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+
+<head>
+    <!-- branch ready for review -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Material Design for Bootstrap fonts and icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+
+    <!-- Material Design for Bootstrap CSS -->
+    <link rel="stylesheet"
+        href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
+        integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Kalkulator</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="js/functions.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/automaticTests.js" defer></script>
+</head>
+
+<body>
+    <div class="calculator card">
+        <input id="textarea" type="text" class="calculator-screen z-depth-1" value="" disabled />
+        <div class="calculator-keys">
+
+            <button type="button" class="border operator btn btn-info" id="+" value="+">+</button>
+            <button type="button" class="border operator btn btn-info" id="-" value="-">-</button>
+            <button type="button" class="border operator btn btn-info" id="*" value="*">&times;</button>
+            <button type="button" class="border operator btn btn-info" id="/" value="/">&divide;</button>
+
+            <script>
+                let keysArr = [7, 8, 9, 4, 5, 6, 1, 2, 3, 0, "."];
+
+                for (let i = 0; i <= keysArr.length - 1; i++) {
+                    document.write('<button type="button" class="number border btn btn-dark waves-effect" id="' + keysArr[i] + '" value="' + keysArr[i] + '">' + keysArr[i]);
+                }
+            </script>
+
+            <button type="button" class="border clear-all function btn btn-danger btn-sm" id="clear-all"
+                value="clear-all">C</button>
+            <button type="button" class="border clear-last function btn btn-danger btn-sm" id="clear-last"
+                value="clear-last">CE</button>
+            <button type="button" class="border equal-sign btn btn-default" id="=" value="=">=</button>
+
+        </div>
+    </div>
+</body>
+
+</html>

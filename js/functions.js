@@ -3,7 +3,7 @@ const REoperator = /^([+]|[-]|[*]|[/]|[exponentiation]|[roots])$/g;
 
 function operatorHandler(target) {
     let inputArr = screen.value.split('');
-    console.log(inputArr);
+    // console.log(inputArr);
     const lastValue = inputArr[inputArr.length - 1];
 
     if (screen.value === '' || lastValue.match(REoperator) !== null || lastValue[lastValue.length - 1] === '.') {
@@ -14,7 +14,14 @@ function operatorHandler(target) {
 }
 
 function bracketHandler(target) {
-    screen.value += ' ' + target.value;
+    let inputArr = screen.value.split('');
+    const lastValue = inputArr[inputArr.length - 1];
+    console.log('lastValue: ' + lastValue);
+    if (screen.value === '' || lastValue === ' ') {
+        screen.value += target.value;
+    } else {
+        screen.value += ' ' + target.value;
+    }
 }
 
 function expAndRootHandler(target) {
@@ -33,8 +40,15 @@ function numberHandler(target) {
     // console.log(lastValue);
 
     // screen.value += target.value;
+    let inputArr = screen.value.split('');
+    const lastValue = inputArr[inputArr.length - 1];
+    console.log('lastValue: ' + lastValue);
 
-    screen.value += target.value;
+    if (lastValue === '(') {
+        screen.value += ' ' + target.value;
+    } else {
+        screen.value += target.value;
+    }
 
     // tempArray.push(target.value);
 
@@ -54,19 +68,31 @@ function numberHandler(target) {
 }
 
 function equalSignHandler(target) {
-    let equalSignArray = screen.value.split(' ');
+    // let equalSignArray = screen.value.split(' ');
+    // let result = screen.value;
+    let result = screen.value;
+    // eval(result);
+
     screen.value = '';
 
-    if (equalSignArray[0] === target.classList.contains('number') && equalSignArray[1] === target.classList.contains('number')) {
-        equalSignArray.join('');
-    }
+    // function getAllIndexes(arr, val) {
+    //     var indexes = [], i;
+    //     for (i = 0; i < arr.length; i++)
+    //         if (arr[i] === val)
+    //             indexes.push(i);
+    //     return indexes;
+    // }
+    // console.log(getAllIndexes(equalSignArray, '('));
 
-    console.log(equalSignArray.indexOf('('));
+    // console.log(equalSignArray);
+    // if (equalSignArray.includes('*')) {
+    //     // console.log(Number(equalSignArray[0]) * Number(equalSignArray[2]))
+    //     screen.value = Number(equalSignArray[0]) * Number(equalSignArray[2])
+    // }
+    // let result = 1 + 2 * (3 + 4) / 2 - 1;
+    console.log('test: ' + eval(result))
+    screen.value = eval(result);
 
-    console.log(equalSignArray);
-    if (equalSignArray.includes('*')) {
-        console.log(Number(equalSignArray[0]) * Number(equalSignArray[2]))
-    }
 
 }
 

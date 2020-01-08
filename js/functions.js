@@ -16,7 +16,7 @@ function operatorHandler(target) {
 function bracketHandler(target) {
     let inputArr = screen.value.split('');
     const lastValue = inputArr[inputArr.length - 1];
-    console.log('lastValue: ' + lastValue);
+    // console.log('lastValue: ' + lastValue);
     if (screen.value === '' || lastValue === ' ') {
         screen.value += target.value;
     } else {
@@ -25,10 +25,7 @@ function bracketHandler(target) {
 }
 
 function expAndRootHandler(target) {
-    if (target.value === 'sqrt(' || target.value === 'pow(') {
-        // screen.value = '';
-        screen = target.value + screen.value + ')';
-    }
+    screen.value += target.value;
 }
 
 function numberHandler(target) {
@@ -42,7 +39,7 @@ function numberHandler(target) {
     // screen.value += target.value;
     let inputArr = screen.value.split('');
     const lastValue = inputArr[inputArr.length - 1];
-    console.log('lastValue: ' + lastValue);
+    // console.log('lastValue: ' + lastValue);
 
     if (lastValue === '(') {
         screen.value += ' ' + target.value;
@@ -90,9 +87,10 @@ function equalSignHandler(target) {
     //     screen.value = Number(equalSignArray[0]) * Number(equalSignArray[2])
     // }
     // let result = 1 + 2 * (3 + 4) / 2 - 1;
-    console.log('test: ' + eval(result))
+    // console.log('test: ' + eval(result))
     screen.value = eval(result);
 
+    // console.log(Math.pow(3, 4));
 
 }
 

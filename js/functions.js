@@ -25,7 +25,14 @@ function bracketHandler(target) {
 }
 
 function expAndRootHandler(target) {
-    screen.value += target.value;
+    let inputArr = screen.value.split('');
+    const lastValue = inputArr[inputArr.length - 1];
+    // console.log('lastValue: ' + lastValue);
+    if (screen.value === '' || lastValue === ' ') {
+        screen.value += target.value;
+    } else {
+        screen.value += ' ' + target.value + ' ';
+    }
 }
 
 function numberHandler(target) {
@@ -65,22 +72,29 @@ function numberHandler(target) {
 }
 
 function equalSignHandler(target) {
-    // let equalSignArray = screen.value.split(' ');
+    // let equalSignArray = screen.value.split('');
+    let equalSignArray = screen.value.split(' ');
     // let result = screen.value;
-    let result = screen.value;
+    // let result = screen.value;
     // eval(result);
+    console.log(equalSignArray);
 
     screen.value = '';
 
-    // function getAllIndexes(arr, val) {
-    //     var indexes = [], i;
-    //     for (i = 0; i < arr.length; i++)
-    //         if (arr[i] === val)
-    //             indexes.push(i);
-    //     return indexes;
-    // }
-    // console.log(getAllIndexes(equalSignArray, '('));
-
+    function getAllIndexes(arr, val) {
+        var indexes = [], i;
+        for (i = 0; i < arr.length; i++)
+            if (arr[i] === val)
+                indexes.push(i);
+        return indexes;
+    }
+    let exponentiationPosition = Number(getAllIndexes(equalSignArray, '^'));
+    // console.log(Math.pow(equalSignArray[Number(getAllIndexes(equalSignArray, '^')) - 1], equalSignArray[Number(getAllIndexes(equalSignArray, '^')) + 1]));
+    equalSignArray[Number(getAllIndexes(equalSignArray, '^')) - 1] = Math.pow(equalSignArray[Number(getAllIndexes(equalSignArray, '^')) - 1], equalSignArray[Number(getAllIndexes(equalSignArray, '^')) + 1]);
+    console.log(equalSignArray);
+    equalSignArray.splice(exponentiationPosition, 2);
+    console.log(equalSignArray);
+    // equalSignArray.splice(exponentiationPosition, 1);
     // console.log(equalSignArray);
     // if (equalSignArray.includes('*')) {
     //     // console.log(Number(equalSignArray[0]) * Number(equalSignArray[2]))
@@ -88,10 +102,10 @@ function equalSignHandler(target) {
     // }
     // let result = 1 + 2 * (3 + 4) / 2 - 1;
     // console.log('test: ' + eval(result))
+    let result = equalSignArray.join(' ');
+    console.log(screen.value);
     screen.value = eval(result);
-
-    // console.log(Math.pow(3, 4));
-
+    console.log(screen.value);
 }
 
 function clearAllHandler() {

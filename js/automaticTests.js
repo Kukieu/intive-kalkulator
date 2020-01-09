@@ -137,37 +137,37 @@ document.getElementById("+").click();
 document.getElementById(2).click();
 document.getElementById("+").click();
 document.getElementById('2').click();
-document.getElementById('exponentiation').click();
+document.getElementById('power').click();
 document.getElementById('3').click();
 document.getElementById('*').click();
 document.getElementById('3').click();
 document.getElementById("=").click();
 if (document.getElementById('textarea').value === '27') {
-    console.log("✔ 'Sequence of Operations with exponentiation' test passed");
+    console.log("✔ 'Sequence of Operations with power' test passed");
 } else {
-    console.log("𝐗 'Sequence of Operations with exponentiation' test failed");
+    console.log("𝐗 'Sequence of Operations with power' test failed");
 }
 
 textareaReset();
 
 document.getElementById(3).click();
-document.getElementById('exponentiation').click();
+document.getElementById('power').click();
 document.getElementById(2).click();
 document.getElementById("+").click();
 document.getElementById('2').click();
-document.getElementById('exponentiation').click();
+document.getElementById('power').click();
 document.getElementById('3').click();
 document.getElementById("=").click();
 if (document.getElementById('textarea').value === '17') {
-    console.log("✔ 'Sequence of Operations with exponentiation' test passed");
+    console.log("✔ 'Sequence of Operations with power' test passed");
 } else {
-    console.log("𝐗 'Sequence of Operations with exponentiation' test failed");
+    console.log("𝐗 'Sequence of Operations with power' test failed");
 }
 
 textareaReset();
 
 // document.getElementById(3).click();
-// document.getElementById("exponentiation").click();
+// document.getElementById("power").click();
 // document.getElementById(2).click();
 // document.getElementById('=').click();
 

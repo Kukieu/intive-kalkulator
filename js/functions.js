@@ -1,5 +1,5 @@
 let screen = document.getElementById('textarea');
-const REoperator = /^([+]|[-]|[*]|[/]|[exponentiation]|[roots])$/g;
+const REoperator = /^([+]|[-]|[*]|[/]|[power]|[roots])$/g;
 
 function operatorHandler(target) {
     let inputArr = screen.value.split('');
@@ -24,7 +24,7 @@ function bracketHandler(target) {
     }
 }
 
-function expAndRootHandler(target) {
+function powAndRootHandler(target) {
     let inputArr = screen.value.split('');
     const lastValue = inputArr[inputArr.length - 1];
     // console.log('lastValue: ' + lastValue);
@@ -81,33 +81,33 @@ function equalSignHandler(target) {
 
     screen.value = '';
 
-    function getAllIndexes(arr, val) {
-        var indexes = [], i;
-        for (i = 0; i < arr.length; i++)
-            if (arr[i] === val)
-                indexes.push(i);
-        return indexes;
-    }
+    // function getAllIndexes(arr, val) {
+    //     var indexes = [], i;
+    //     for (i = 0; i < arr.length; i++)
+    //         if (arr[i] === val)
+    //             indexes.push(i);
+    //     return indexes;
+    // }
     for (let j = 0; j < equalSignArray.length; j++) {
         console.log(equalSignArray.indexOf('^'));
         if (equalSignArray.indexOf('^') !== -1) {
-            let exponentiationPosition = Number(equalSignArray.indexOf('^'));
+            let powerPosition = Number(equalSignArray.indexOf('^'));
             // console.log(Math.pow(equalSignArray[Number(getAllIndexes(equalSignArray, '^')) - 1], equalSignArray[Number(getAllIndexes(equalSignArray, '^')) + 1]));
             equalSignArray[Number(equalSignArray.indexOf('^')) - 1] = Math.pow(equalSignArray[Number(equalSignArray.indexOf('^')) - 1], equalSignArray[Number(equalSignArray.indexOf('^')) + 1]);
             console.log(equalSignArray);
-            equalSignArray.splice(exponentiationPosition, 2);
+            equalSignArray.splice(powerPosition, 2);
             console.log(equalSignArray);
         }
     }
 
-    // let exponentiationPosition = Number(getAllIndexes(equalSignArray, '^'));
+    // let powerPosition = Number(getAllIndexes(equalSignArray, '^'));
     // // console.log(Math.pow(equalSignArray[Number(getAllIndexes(equalSignArray, '^')) - 1], equalSignArray[Number(getAllIndexes(equalSignArray, '^')) + 1]));
     // equalSignArray[Number(getAllIndexes(equalSignArray, '^')) - 1] = Math.pow(equalSignArray[Number(getAllIndexes(equalSignArray, '^')) - 1], equalSignArray[Number(getAllIndexes(equalSignArray, '^')) + 1]);
     // console.log(equalSignArray);
-    // equalSignArray.splice(exponentiationPosition, 2);
+    // equalSignArray.splice(powerPosition, 2);
     // console.log(equalSignArray);
 
-    // equalSignArray.splice(exponentiationPosition, 1);
+    // equalSignArray.splice(powerPosition, 1);
     // console.log(equalSignArray);
     // if (equalSignArray.includes('*')) {
     //     // console.log(Number(equalSignArray[0]) * Number(equalSignArray[2]))

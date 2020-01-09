@@ -31,13 +31,11 @@
             <button type="button" class="border operator btn btn-info" id="*" value="*">&times;</button>
             <button type="button" class="border operator btn btn-info" id="/" value="/">&divide;</button>
             <button type="button" class="border operator btn btn-info" id="/" value="/">&divide;</button>
-            <button type="button" class="border exp-and-root btn btn-info" id="roots" value="sqrt(">&#8730;</button>
-            <button type="button" class="border exp-and-root btn btn-info" id="exponentiation"
-                value="^">x<sup>y</sup></button>
+            <button type="button" class="border pow-and-root btn btn-info" id="roots" value="√">&#8730;</button>
+            <button type="button" class="border pow-and-root btn btn-info" id="power" value="^">x<sup>y</sup></button>
 
             <script>
                 let keysArr = [7, 8, 9, 4, 5, 6, 1, 2, 3, 0];
-
                 for (let i = 0; i <= keysArr.length - 1; i++) {
                     document.write('<button type="button" class="number border btn btn-dark waves-effect" id="' + keysArr[i] + '" value="' + keysArr[i] + '">' + keysArr[i]);
                 }

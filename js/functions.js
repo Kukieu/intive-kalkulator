@@ -88,12 +88,25 @@ function equalSignHandler(target) {
                 indexes.push(i);
         return indexes;
     }
-    let exponentiationPosition = Number(getAllIndexes(equalSignArray, '^'));
-    // console.log(Math.pow(equalSignArray[Number(getAllIndexes(equalSignArray, '^')) - 1], equalSignArray[Number(getAllIndexes(equalSignArray, '^')) + 1]));
-    equalSignArray[Number(getAllIndexes(equalSignArray, '^')) - 1] = Math.pow(equalSignArray[Number(getAllIndexes(equalSignArray, '^')) - 1], equalSignArray[Number(getAllIndexes(equalSignArray, '^')) + 1]);
-    console.log(equalSignArray);
-    equalSignArray.splice(exponentiationPosition, 2);
-    console.log(equalSignArray);
+    for (let j = 0; j < equalSignArray.length; j++) {
+        console.log(equalSignArray.indexOf('^'));
+        if (equalSignArray.indexOf('^') !== -1) {
+            let exponentiationPosition = Number(equalSignArray.indexOf('^'));
+            // console.log(Math.pow(equalSignArray[Number(getAllIndexes(equalSignArray, '^')) - 1], equalSignArray[Number(getAllIndexes(equalSignArray, '^')) + 1]));
+            equalSignArray[Number(equalSignArray.indexOf('^')) - 1] = Math.pow(equalSignArray[Number(equalSignArray.indexOf('^')) - 1], equalSignArray[Number(equalSignArray.indexOf('^')) + 1]);
+            console.log(equalSignArray);
+            equalSignArray.splice(exponentiationPosition, 2);
+            console.log(equalSignArray);
+        }
+    }
+
+    // let exponentiationPosition = Number(getAllIndexes(equalSignArray, '^'));
+    // // console.log(Math.pow(equalSignArray[Number(getAllIndexes(equalSignArray, '^')) - 1], equalSignArray[Number(getAllIndexes(equalSignArray, '^')) + 1]));
+    // equalSignArray[Number(getAllIndexes(equalSignArray, '^')) - 1] = Math.pow(equalSignArray[Number(getAllIndexes(equalSignArray, '^')) - 1], equalSignArray[Number(getAllIndexes(equalSignArray, '^')) + 1]);
+    // console.log(equalSignArray);
+    // equalSignArray.splice(exponentiationPosition, 2);
+    // console.log(equalSignArray);
+
     // equalSignArray.splice(exponentiationPosition, 1);
     // console.log(equalSignArray);
     // if (equalSignArray.includes('*')) {

@@ -87,8 +87,13 @@ textareaReset();
 
 document.getElementById(8).click();
 document.getElementById(2).click();
+document.getElementById('-').click();
+document.getElementById(2).click();
+document.getElementById(8).click();
+document.getElementById(2).click();
 document.getElementById("clear-last").click();
-if (document.getElementById('textarea').value === '8') {
+document.getElementById("clear-last").click();
+if (document.getElementById('textarea').value === '82') {
     console.log("✔ 'clear-last' test passed");
 } else {
     console.log("𝐗 'clear-last' test failed");

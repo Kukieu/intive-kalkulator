@@ -44,8 +44,9 @@ function numberHandler(target) {
     const lastValue = inputArr[inputArr.length - 1];
     // console.log(inputArr);
 
-    if (lastValue - 1 === '-') {
+    if (lastValue === '-') {
         screen.value += target.value;
+        return;
     }
 
     if (target.value === '.' && lastValue === '.') {
@@ -116,12 +117,6 @@ function equalSignHandler(target) {
     // equalSignArray.splice(powerPosition, 2);
     // console.log(equalSignArray);
 
-    // equalSignArray.splice(powerPosition, 1);
-    // console.log(equalSignArray);
-    // if (equalSignArray.includes('*')) {
-    //     // console.log(Number(equalSignArray[0]) * Number(equalSignArray[2]))
-    //     screen.value = Number(equalSignArray[0]) * Number(equalSignArray[2])
-    // }
     // let test = -1 + 2 * (3 + 4) / 2 - 1;
     // let test = '- 1 + - 1';
     // console.log('test: ' + eval(test))
@@ -138,8 +133,8 @@ function clearAllHandler() {
 }
 
 function clearLastHandler() {
-    let equalSignArray = screen.value.split(' ');
-    equalSignArray.pop();
+    let screenArray = screen.value.split(' ');
+    screenArray.pop();
     // console.log(equalSignArray);
-    screen.value = equalSignArray.join(' ');
+    screen.value = screenArray.join(' ');
 }

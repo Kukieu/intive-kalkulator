@@ -3,8 +3,12 @@ const REoperator = /^([+]|[-]|[*]|[/]|[power]|[roots])$/g;
 
 function operatorHandler(target) {
     let inputArr = screen.value.split('');
-    // console.log(inputArr);
+
     const lastValue = inputArr[inputArr.length - 1];
+
+    if (screen.value === '' && target.value === '-') {
+        screen.value += target.value;
+    }
 
     if (screen.value === '' || lastValue.match(REoperator) !== null || lastValue[lastValue.length - 1] === '.') {
         return;
@@ -16,7 +20,7 @@ function operatorHandler(target) {
 function bracketHandler(target) {
     let inputArr = screen.value.split('');
     const lastValue = inputArr[inputArr.length - 1];
-    // console.log('lastValue: ' + lastValue);
+
     if (screen.value === '' || lastValue === ' ') {
         screen.value += target.value;
     } else {
@@ -27,7 +31,7 @@ function bracketHandler(target) {
 function powAndRootHandler(target) {
     let inputArr = screen.value.split('');
     const lastValue = inputArr[inputArr.length - 1];
-    // console.log('lastValue: ' + lastValue);
+
     if (screen.value === '' || lastValue === ' ') {
         screen.value += target.value;
     } else {
@@ -36,17 +40,17 @@ function powAndRootHandler(target) {
 }
 
 function numberHandler(target) {
-
-    // console.log(tempArray);
-    // tempArray.push(target.value);
-
-
-    // console.log(lastValue);
-
-    // screen.value += target.value;
     let inputArr = screen.value.split('');
     const lastValue = inputArr[inputArr.length - 1];
-    // console.log('lastValue: ' + lastValue);
+    // console.log(inputArr);
+
+    if (lastValue - 1 === '-') {
+        screen.value += target.value;
+    }
+
+    if (target.value === '.' && lastValue === '.') {
+        return;
+    }
 
     if (lastValue === '(') {
         screen.value += ' ' + target.value;
@@ -74,7 +78,8 @@ function numberHandler(target) {
 function equalSignHandler(target) {
     // let equalSignArray = screen.value.split('');
     let equalSignArray = screen.value.split(' ');
-    console.log(equalSignArray);
+
+    // console.log(equalSignArray);
 
     screen.value = '';
 
@@ -90,31 +95,19 @@ function equalSignHandler(target) {
             let powerPosition = Number(equalSignArray.indexOf('^'));
             // console.log(Math.pow(equalSignArray[Number(getAllIndexes(equalSignArray, '^')) - 1], equalSignArray[Number(getAllIndexes(equalSignArray, '^')) + 1]));
             equalSignArray[Number(equalSignArray.indexOf('^')) - 1] = Math.pow(equalSignArray[Number(equalSignArray.indexOf('^')) - 1], equalSignArray[Number(equalSignArray.indexOf('^')) + 1]);
-            console.log(equalSignArray);
+            // console.log(equalSignArray);
             equalSignArray.splice(powerPosition, 2);
-            console.log(equalSignArray);
+            // console.log(equalSignArray);
         }
         if (equalSignArray.indexOf('√') !== -1) {
             let powerPosition = Number(equalSignArray.indexOf('√'));
             // console.log(Math.pow(equalSignArray[Number(getAllIndexes(equalSignArray, '^')) - 1], equalSignArray[Number(getAllIndexes(equalSignArray, '^')) + 1]));
             equalSignArray[Number(equalSignArray.indexOf('√')) - 1] = Math.pow(equalSignArray[Number(equalSignArray.indexOf('√')) - 1], 1 / equalSignArray[Number(equalSignArray.indexOf('√')) + 1]);
-            console.log(equalSignArray);
+            // console.log(equalSignArray);
             equalSignArray.splice(powerPosition, 2);
-            console.log(equalSignArray);
+            // console.log(equalSignArray);
         }
     }
-
-    // for (let k = 0; k < equalSignArray.length; k++) {
-    //     // console.log(equalSignArray.indexOf('^'));
-    //     if (equalSignArray.indexOf('√') !== -1) {
-    //         let powerPosition = Number(equalSignArray.indexOf('√'));
-    //         // console.log(Math.pow(equalSignArray[Number(getAllIndexes(equalSignArray, '^')) - 1], equalSignArray[Number(getAllIndexes(equalSignArray, '^')) + 1]));
-    //         equalSignArray[Number(equalSignArray.indexOf('√')) - 1] = Math.pow(equalSignArray[Number(equalSignArray.indexOf('√')) - 1], 1 / equalSignArray[Number(equalSignArray.indexOf('√')) + 1]);
-    //         console.log(equalSignArray);
-    //         equalSignArray.splice(powerPosition, 2);
-    //         console.log(equalSignArray);
-    //     }
-    // }
 
     // let powerPosition = Number(getAllIndexes(equalSignArray, '^'));
     // // console.log(Math.pow(equalSignArray[Number(getAllIndexes(equalSignArray, '^')) - 1], equalSignArray[Number(getAllIndexes(equalSignArray, '^')) + 1]));
@@ -145,7 +138,8 @@ function clearAllHandler() {
 }
 
 function clearLastHandler() {
-    let textareaValue = screen.value;
-    let newValue = textareaValue.slice(0, textareaValue.length - 1);
-    screen.value = newValue;
+    let equalSignArray = screen.value.split(' ');
+    equalSignArray.pop();
+    // console.log(equalSignArray);
+    screen.value = equalSignArray.join(' ');
 }

@@ -1,8 +1,8 @@
 const keys = document.querySelector('.calculator-keys');
-const production = 0;
+const production = 1;
 
 if (production === 0) {
-    include('js/automaticTests.js');
+    include('js/automaticTests.js', 'text/javascript');
 }
 
 keys.addEventListener('click', (event) => {
@@ -30,12 +30,12 @@ keys.addEventListener('click', (event) => {
     }
 })
 
-function include(filename) {
+function include(filename, type) {
     var head = document.getElementsByTagName('head')[0];
 
     var script = document.createElement('script');
     script.src = filename;
-    script.type = 'text/javascript';
+    script.type = type;
 
     head.appendChild(script)
 }

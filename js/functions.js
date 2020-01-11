@@ -89,11 +89,23 @@ function equalSignHandler(target) {
     //     return indexes;
     // }
     for (let j = 0; j < equalSignArray.length; j++) {
-        console.log(equalSignArray.indexOf('^'));
+        // console.log(equalSignArray.indexOf('^'));
         if (equalSignArray.indexOf('^') !== -1) {
             let powerPosition = Number(equalSignArray.indexOf('^'));
             // console.log(Math.pow(equalSignArray[Number(getAllIndexes(equalSignArray, '^')) - 1], equalSignArray[Number(getAllIndexes(equalSignArray, '^')) + 1]));
             equalSignArray[Number(equalSignArray.indexOf('^')) - 1] = Math.pow(equalSignArray[Number(equalSignArray.indexOf('^')) - 1], equalSignArray[Number(equalSignArray.indexOf('^')) + 1]);
+            console.log(equalSignArray);
+            equalSignArray.splice(powerPosition, 2);
+            console.log(equalSignArray);
+        }
+    }
+
+    for (let k = 0; k < equalSignArray.length; k++) {
+        // console.log(equalSignArray.indexOf('^'));
+        if (equalSignArray.indexOf('√') !== -1) {
+            let powerPosition = Number(equalSignArray.indexOf('√'));
+            // console.log(Math.pow(equalSignArray[Number(getAllIndexes(equalSignArray, '^')) - 1], equalSignArray[Number(getAllIndexes(equalSignArray, '^')) + 1]));
+            equalSignArray[Number(equalSignArray.indexOf('√')) - 1] = Math.pow(equalSignArray[Number(equalSignArray.indexOf('√')) - 1], 1 / equalSignArray[Number(equalSignArray.indexOf('√')) + 1]);
             console.log(equalSignArray);
             equalSignArray.splice(powerPosition, 2);
             console.log(equalSignArray);
@@ -113,12 +125,13 @@ function equalSignHandler(target) {
     //     // console.log(Number(equalSignArray[0]) * Number(equalSignArray[2]))
     //     screen.value = Number(equalSignArray[0]) * Number(equalSignArray[2])
     // }
-    // let result = 1 + 2 * (3 + 4) / 2 - 1;
-    // console.log('test: ' + eval(result))
+    // let test = -1 + 2 * (3 + 4) / 2 - 1;
+    // let test = '- 1 + - 1';
+    // console.log('test: ' + eval(test))
     let result = equalSignArray.join(' ');
-    console.log(screen.value);
+    // console.log(screen.value);
     screen.value = eval(result);
-    console.log(screen.value);
+    // console.log(screen.value);
 }
 
 function clearAllHandler() {

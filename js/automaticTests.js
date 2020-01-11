@@ -143,9 +143,9 @@ document.getElementById('*').click();
 document.getElementById('3').click();
 document.getElementById("=").click();
 if (document.getElementById('textarea').value === '27') {
-    console.log("✔ 'Sequence of Operations with power' test passed");
+    console.log("✔ 'Sequence of Operations with power 1' test passed");
 } else {
-    console.log("𝐗 'Sequence of Operations with power' test failed");
+    console.log("𝐗 'Sequence of Operations with power 1' test failed");
 }
 
 textareaReset();
@@ -159,9 +159,9 @@ document.getElementById('power').click();
 document.getElementById('3').click();
 document.getElementById("=").click();
 if (document.getElementById('textarea').value === '17') {
-    console.log("✔ 'Sequence of Operations with power' test passed");
+    console.log("✔ 'Sequence of Operations with power 2' test passed");
 } else {
-    console.log("𝐗 'Sequence of Operations with power' test failed");
+    console.log("𝐗 'Sequence of Operations with power 2' test failed");
 }
 
 textareaReset();

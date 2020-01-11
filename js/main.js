@@ -1,4 +1,9 @@
 const keys = document.querySelector('.calculator-keys');
+let production = 0;
+
+if (production === 0) {
+    include('js/automaticTests.js');
+}
 
 keys.addEventListener('click', (event) => {
     const { target } = event;
@@ -24,3 +29,13 @@ keys.addEventListener('click', (event) => {
         powAndRootHandler(target);
     }
 })
+
+function include(filename) {
+    var head = document.getElementsByTagName('head')[0];
+
+    var script = document.createElement('script');
+    script.src = filename;
+    script.type = 'text/javascript';
+
+    head.appendChild(script)
+}

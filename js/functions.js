@@ -74,9 +74,6 @@ function numberHandler(target) {
 function equalSignHandler(target) {
     // let equalSignArray = screen.value.split('');
     let equalSignArray = screen.value.split(' ');
-    // let result = screen.value;
-    // let result = screen.value;
-    // eval(result);
     console.log(equalSignArray);
 
     screen.value = '';
@@ -89,7 +86,6 @@ function equalSignHandler(target) {
     //     return indexes;
     // }
     for (let j = 0; j < equalSignArray.length; j++) {
-        // console.log(equalSignArray.indexOf('^'));
         if (equalSignArray.indexOf('^') !== -1) {
             let powerPosition = Number(equalSignArray.indexOf('^'));
             // console.log(Math.pow(equalSignArray[Number(getAllIndexes(equalSignArray, '^')) - 1], equalSignArray[Number(getAllIndexes(equalSignArray, '^')) + 1]));
@@ -98,10 +94,6 @@ function equalSignHandler(target) {
             equalSignArray.splice(powerPosition, 2);
             console.log(equalSignArray);
         }
-    }
-
-    for (let k = 0; k < equalSignArray.length; k++) {
-        // console.log(equalSignArray.indexOf('^'));
         if (equalSignArray.indexOf('√') !== -1) {
             let powerPosition = Number(equalSignArray.indexOf('√'));
             // console.log(Math.pow(equalSignArray[Number(getAllIndexes(equalSignArray, '^')) - 1], equalSignArray[Number(getAllIndexes(equalSignArray, '^')) + 1]));
@@ -111,6 +103,18 @@ function equalSignHandler(target) {
             console.log(equalSignArray);
         }
     }
+
+    // for (let k = 0; k < equalSignArray.length; k++) {
+    //     // console.log(equalSignArray.indexOf('^'));
+    //     if (equalSignArray.indexOf('√') !== -1) {
+    //         let powerPosition = Number(equalSignArray.indexOf('√'));
+    //         // console.log(Math.pow(equalSignArray[Number(getAllIndexes(equalSignArray, '^')) - 1], equalSignArray[Number(getAllIndexes(equalSignArray, '^')) + 1]));
+    //         equalSignArray[Number(equalSignArray.indexOf('√')) - 1] = Math.pow(equalSignArray[Number(equalSignArray.indexOf('√')) - 1], 1 / equalSignArray[Number(equalSignArray.indexOf('√')) + 1]);
+    //         console.log(equalSignArray);
+    //         equalSignArray.splice(powerPosition, 2);
+    //         console.log(equalSignArray);
+    //     }
+    // }
 
     // let powerPosition = Number(getAllIndexes(equalSignArray, '^'));
     // // console.log(Math.pow(equalSignArray[Number(getAllIndexes(equalSignArray, '^')) - 1], equalSignArray[Number(getAllIndexes(equalSignArray, '^')) + 1]));

@@ -11,6 +11,10 @@ function operatorHandler(target) {
         screen.value += target.value;
     }
 
+    // if (lastValue[lastValue.length] === target.value) {
+    //     return;
+    // }
+
     if (screen.value === '' || lastValue.match(REoperator) !== null || lastValue[lastValue.length - 1] === '.') {
         return;
     } else {
@@ -46,6 +50,7 @@ function numberHandler(target) {
     // console.log(inputArr);
 
     if (lastValue === '-') {
+        // console.log(lastValue - 1);
         screen.value += target.value;
         return;
     }
@@ -59,6 +64,7 @@ function numberHandler(target) {
     } else {
         screen.value += target.value;
     }
+
 
     // tempArray.push(target.value);
 
@@ -80,6 +86,10 @@ function numberHandler(target) {
 function equalSignHandler(target) {
     // let equalSignArray = screen.value.split('');
     let operationHistory = screen.value;
+
+    convertCurrency('EUR').then(({ mid }) => {
+        if (mid !== undefined) { screen.value += mid }
+    })
 
     screenHistory.value = '';
     screenHistory.value = operationHistory;
@@ -149,4 +159,26 @@ function clearLastHandler() {
     screenArray.pop();
     // console.log(equalSignArray);
     screen.value = screenArray.join(' ');
+}
+
+function convertCurrency(currencyCode) {
+    return new Promise((resolve, reject) => {
+        fetch(`http://api.nbp.pl/api/exchangerates/rates/A/${currencyCode}/`, {
+            method: 'get',
+            headers: {
+                'Accept': 'application/json'
+            },
+            referrer: 'no-referrer'
+        }).then(function (response) {
+            if (response.ok) {
+                return response.json();
+            } else {
+                return Promise.reject(response);
+            }
+        }).then(function (data) {
+            resolve({ mid: data.rates[0].mid });
+        }).catch(function (err) {
+            console.warn('Something went wrong.', err);
+        });
+    })
 }

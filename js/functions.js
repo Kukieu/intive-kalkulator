@@ -1,4 +1,5 @@
 let screen = document.getElementById('textarea');
+let screenHistory = document.getElementById('textarea-history');
 const REoperator = /^([+]|[-]|[*]|[/]|[power]|[roots])$/g;
 
 function operatorHandler(target) {
@@ -78,6 +79,11 @@ function numberHandler(target) {
 
 function equalSignHandler(target) {
     // let equalSignArray = screen.value.split('');
+    let operationHistory = screen.value;
+
+    screenHistory.value = '';
+    screenHistory.value = operationHistory;
+
     let equalSignArray = screen.value.split(' ');
 
     // console.log(equalSignArray);
@@ -128,6 +134,7 @@ function equalSignHandler(target) {
 
 function clearAllHandler() {
     screen.value = '';
+    screenHistory.value = '';
     equalSignArray = [];
     inputArr = [];
 }

@@ -37,8 +37,12 @@ addTest('Sequence of Operations with power 2'
     , '17');
 
 addTest('Sequence of Operations with power and roots'
-    , '( 4 power 2 + 2 power 3 - 2 5 roots 2 * ( 2 * 2 ) ) - 2 . 5 ='
+    , '( 4 power 2 + 2 power 3 - 2 roots 2 5 * ( 2 * 2 ) ) - 2 . 5 ='
     , '1.5');
+
+addTest('Negative roots'
+    , '2 roots - 2 5 ='
+    , 'Incorrect operation');
 
 function addTest(title, buttonPressed, expectedResult) {
     let buttonArray = buttonPressed.split(' ');

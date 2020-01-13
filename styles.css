@@ -64,6 +64,11 @@
       font-size: 2rem!important;
     }
 
+    .calculator select{
+      height: 60px;
+      font-size: 2rem;
+    }
+
     .equal-sign {
       height: 98%;
       grid-area: 5 / 3 / 5 / 5;

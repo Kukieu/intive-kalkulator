@@ -87,9 +87,9 @@ function equalSignHandler(target) {
     // let equalSignArray = screen.value.split('');
     let operationHistory = screen.value;
 
-    convertCurrency('EUR').then(({ mid }) => {
-        screen.value += mid
-    })
+    // convertCurrency('EUR').then(({ mid }) => {
+    //     screen.value += mid
+    // })
 
     screenHistory.value = '';
     screenHistory.value = operationHistory;
@@ -160,56 +160,3 @@ function clearLastHandler() {
     // console.log(equalSignArray);
     screen.value = screenArray.join(' ');
 }
-
-function convertCurrency(currencyCode) {
-    return new Promise((resolve, reject) => {
-        fetch(`http://api.nbp.pl/api/exchangerates/rates/A/${currencyCode}/`, {
-            method: 'get',
-            headers: {
-                'Accept': 'application/json'
-            },
-            referrer: 'no-referrer'
-        }).then(function (response) {
-            if (response.ok) {
-                return response.json();
-            } else {
-                return reject(response);
-            }
-        }).then(function (data) {
-            resolve({ mid: data.rates[0].mid });
-            console.log(data);
-        }).catch(function (err) {
-            reject(err);
-        });
-    })
-}
-
-let result;
-
-function listCurrency() {
-    fetch(`http://api.nbp.pl/api/exchangerates/tables/B/`, {
-        method: 'get',
-        headers: {
-            'Accept': 'application/json'
-        },
-        referrer: 'no-referrer'
-    }).then(function (response) {
-        // return response[0];
-        if (response.ok) {
-            return response.json();
-        } else {
-            return Promise.reject(response);
-        }
-    })
-        .then(function (response) {
-            result = response[0].rates;
-            console.log('Request successful', result);
-        })
-        .catch(function (error) {
-            console.log('Request failed', error)
-        });
-    return result;
-}
-
-let resulted = listCurrency();
-console.log('json: ' + resulted);

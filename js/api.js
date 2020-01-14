@@ -21,6 +21,8 @@ function convertCurrency(currencyCode) {
     })
 }
 
+var codeList = [];
+
 let listCurrency = new Promise(function (resolve, reject) {
     fetch(`http://api.nbp.pl/api/exchangerates/tables/B/`, {
         method: 'get',
@@ -33,21 +35,52 @@ let listCurrency = new Promise(function (resolve, reject) {
             resolve(res[0].rates);
         })
         .catch(function (error) {
-            console.log('Request failed', error)
+            reject(error);
         });
 });
 
-let codeList = [];
-let count = 0;
-
-// resolve runs the first function in .then
 listCurrency.then(
     // result => console.log(result[0].code),
-    result => result.forEach(code => {
-        console.log(code.code);
-        codeList[count] = code.code;
-        count++;
-        // console.log(count);
-    }),
-    error => console.log(error)
-).then(codeList => { console.log(codeList) })
+    result => result.forEach(result => {
+        // console.log(code.code);
+        // codeList[count] = result;
+        codeList.push(result.code);
+        // console.log(result);
+        // console.log(codeList[count]);
+        // console.log(codeList[count]);
+        // console.log(codeList);
+        // var myArr = JSON.parse(this.code);
+    })
+)
+
+var p = Promise.all([listCurrency]).then(function (values) {
+    console.log(values);
+});
+
+// let x = document.getElementById("codeListSelect");
+// var option = document.createElement("option");
+// console.log(x);
+// for (let i = 0; i < codeList.length; i++) {
+//     // var car = new Option(codeList[i], i);
+//     x.options.add(option, codeList[i]);
+// }
+// console.log(codeList);
+// document.write(`<option value="${x}">${codeList[x]}</option>`);
+// console.log(codeList);
+// document.write(`</select>`);
+
+var x = document.getElementById("codeListSelect");
+
+for (let i = 0; i < 10; i++) {
+    var option = document.createElement("option");
+    option.text = codeList[i];
+    x.add(option);
+}
+// let codeListString = JSON.parse(codeList);
+// console.log(codeList);
+document.getElementById("demo").innerHTML = JSON.stringify(codeList);
+                // console.log(x);
+                // console.log(codeList);
+                // document.write(`<option value="${x}">${codeList[x]}</option>`);
+                            // console.log(codeList);
+                            // document.write(`</select>`);

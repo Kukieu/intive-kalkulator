@@ -38,13 +38,17 @@ let listCurrency = new Promise(function (resolve, reject) {
             reject(error);
         });
 });
-
+let x = document.getElementById("codeListSelect");
 listCurrency.then(
     // result => console.log(result[0].code),
     result => result.forEach(result => {
         // console.log(code.code);
         // codeList[count] = result;
-        codeList.push(result.code);
+        // codeList.push(result.code);
+        var option = document.createElement("option");
+        option.text = result.code;
+        option.classList = 'code';
+        x.add(option);
         // console.log(result);
         // console.log(codeList[count]);
         // console.log(codeList[count]);
@@ -52,10 +56,10 @@ listCurrency.then(
         // var myArr = JSON.parse(this.code);
     })
 )
-
-var p = Promise.all([listCurrency]).then(function (values) {
-    console.log(values);
-});
+// console.log(x.length);
+// var p = Promise.all([listCurrency]).then(function (values) {
+//     console.log(values);
+// });
 
 // let x = document.getElementById("codeListSelect");
 // var option = document.createElement("option");
@@ -69,16 +73,17 @@ var p = Promise.all([listCurrency]).then(function (values) {
 // console.log(codeList);
 // document.write(`</select>`);
 
-var x = document.getElementById("codeListSelect");
+// var x = document.getElementById("codeListSelect");
 
-for (let i = 0; i < 10; i++) {
-    var option = document.createElement("option");
-    option.text = codeList[i];
-    x.add(option);
-}
+// for (let i = 0; i < 10; i++) {
+//     var option = document.createElement("option");
+//     option.text = codeList[i];
+//     x.add(option);
+// }
 // let codeListString = JSON.parse(codeList);
 // console.log(codeList);
-document.getElementById("demo").innerHTML = JSON.stringify(codeList);
+// document.getElementById("demo").innerHTML = JSON.stringify(codeList);
+
                 // console.log(x);
                 // console.log(codeList);
                 // document.write(`<option value="${x}">${codeList[x]}</option>`);

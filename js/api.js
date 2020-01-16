@@ -14,17 +14,27 @@ function convertCurrency(currencyCode) {
             }
         }).then(function (data) {
             resolve({ mid: data.rates[0].mid });
-            console.log(data);
-        }).catch(function (err) {
-            reject(err);
-        });
+            // let result = data.rates[0].mid;
+
+            // var currencyReturnedCode = data.rates[0].mid;
+            // console.log(data);
+        }).then(function (result) {
+            return result;
+        })
+            .catch(function (err) {
+                reject(err);
+            });
     })
 }
+
+// function returnCurrency(){
+//     convertCurrency.then(resolve)
+// }
 
 var codeList = [];
 
 let listCurrency = new Promise(function (resolve, reject) {
-    fetch(`http://api.nbp.pl/api/exchangerates/tables/B/`, {
+    fetch(`http://api.nbp.pl/api/exchangerates/tables/A/`, {
         method: 'get',
         headers: {
             'Accept': 'application/json'
@@ -84,8 +94,8 @@ listCurrency.then(
 // console.log(codeList);
 // document.getElementById("demo").innerHTML = JSON.stringify(codeList);
 
-                // console.log(x);
-                // console.log(codeList);
-                // document.write(`<option value="${x}">${codeList[x]}</option>`);
-                            // console.log(codeList);
-                            // document.write(`</select>`);
+// console.log(x);
+// console.log(codeList);
+// document.write(`<option value="${x}">${codeList[x]}</option>`);
+// console.log(codeList);
+// document.write(`</select>`);

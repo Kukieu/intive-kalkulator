@@ -65,7 +65,6 @@ function numberHandler(target) {
         screen.value += target.value;
     }
 
-
     // tempArray.push(target.value);
 
     // if (lastValue !== '+') {
@@ -85,10 +84,16 @@ function numberHandler(target) {
 
 function currencyHandler() {
     let currencyValue = document.getElementById("codeListSelect").value;
-    screen.value += currencyValue + '(';
-    // console.log(currencyValue);
-
+    screen.value += ' ' + currencyValue + ' ';
 }
+
+let currencyCodeList = [];
+
+// for (let i = 0; i < document.getElementById("codeListSelect").length; i++) {
+//     currencyCodeList[i] = currencyValue[i];
+//     currencyCodeList[i + 1] = currencyValue[i];
+//     currencyCodeList[i + 2] = currencyValue[i];
+// }
 
 function equalSignHandler(target) {
     // let equalSignArray = screen.value.split('');
@@ -103,7 +108,7 @@ function equalSignHandler(target) {
 
     let equalSignArray = screen.value.split(' ');
 
-    console.log(equalSignArray);
+    // console.log(equalSignArray);
 
     screen.value = '';
 
@@ -114,6 +119,19 @@ function equalSignHandler(target) {
     //             indexes.push(i);
     //     return indexes;
     // }
+    for (let i = 0; i < equalSignArray.length; i++) {
+        if (equalSignArray[i].match(/[a-z]/i)) {
+            // screen.value += target.value;
+            // alert(JSON.stringify(convertCurrency(equalSignArray[i])));
+            let currencyReturnedCode = convertCurrency(equalSignArray[i]).then(function (result) {
+                console.log(result.mid);
+            });
+            console.log(currencyReturnedCode);
+        }
+    }
+
+
+
     for (let j = 0; j < equalSignArray.length; j++) {
         if (equalSignArray.indexOf('^') !== -1) {
             let powerPosition = Number(equalSignArray.indexOf('^'));
@@ -151,7 +169,9 @@ function equalSignHandler(target) {
     let result = equalSignArray.join(' ');
     // console.log(screen.value);
     screen.value = eval(result);
-    // console.log(screen.value);
+
+    // test = eval('7 7');
+    // console.log(test);
 }
 
 function clearAllHandler() {

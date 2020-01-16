@@ -83,10 +83,11 @@ function numberHandler(target) {
     // console.log(target.value);
 }
 
-function currencyHandler(target) {
-    // screen.value += target.value;
+function currencyHandler() {
     let currencyValue = document.getElementById("codeListSelect").value;
-    console.log(currencyValue);
+    screen.value += currencyValue + '(';
+    // console.log(currencyValue);
+
 }
 
 function equalSignHandler(target) {
@@ -102,7 +103,7 @@ function equalSignHandler(target) {
 
     let equalSignArray = screen.value.split(' ');
 
-    // console.log(equalSignArray);
+    console.log(equalSignArray);
 
     screen.value = '';
 

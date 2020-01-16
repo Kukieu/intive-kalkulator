@@ -49,8 +49,9 @@
             <button type="button" class="border clear-last function btn btn-danger btn-sm" id="clear-last"
                 value="clear-last">CE</button>
             <button type="button" class="border equal-sign btn btn-default" id="=" value="=">=</button>
-            <select id="codeListSelect" class="dropdown browser-default custom-select custom-select-lg mb-3">
-                <option disabled selected>Currency</option>
+            <select id="codeListSelect" class="browser-default custom-select custom-select-lg mb-3"
+                onchange="currencyHandler()">
+                <option disabled>Currency</option>
             </select>
         </div>
     </div>

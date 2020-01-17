@@ -21,7 +21,7 @@ addTest('float'
     , '9');
 
 addTest('clear-all'
-    , '( 4 power 2 + 2 power 3 - 2 5 roots 2 * ( 2 * 2 ) ) - 2 . 5 clear-all'
+    , '( 4 2 + 2 3 - 2 5 roots 2 * ( 2 * 2 ) ) - 2 . 5 clear-all'
     , '');
 
 addTest('clear-last'

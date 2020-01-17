@@ -204,9 +204,11 @@ function equalSignHandler(target) {
     //     console.log(m);
     //     return Promise.all([result.mid]);
     // })
-
+    // if (screen.value.match(/[a-z]/) !== null) {
+    //     alert('yes!');
     for (let i = 0; i < equalSignArray.length; i++) {
-        if (equalSignArray[i].match(/[a-z]/i)) {
+        console.log(equalSignArray);
+        if (typeof (equalSignArray[i]) !== 'number' && equalSignArray[i].match(/[a-z]/i)) {
             convertCurrency(equalSignArray[i]).then(data => returnedValue = data.mid)
                 .then((returnedValue) => {
                     equalSignArray[i] = returnedValue + ' *';
@@ -218,6 +220,7 @@ function equalSignHandler(target) {
                 });
         }
     }
+    // }
 
     // console.log(equalSignArray);
 

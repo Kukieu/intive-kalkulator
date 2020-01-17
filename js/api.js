@@ -49,22 +49,12 @@ let listCurrency = new Promise(function (resolve, reject) {
         });
 });
 let x = document.getElementById("codeListSelect");
-listCurrency.then(
-    // result => console.log(result[0].code),
-    result => result.forEach(result => {
-        // console.log(code.code);
-        // codeList[count] = result;
-        // codeList.push(result.code);
-        var option = document.createElement("option");
-        option.text = result.code;
-        option.classList = 'code';
-        x.add(option);
-        // console.log(result);
-        // console.log(codeList[count]);
-        // console.log(codeList[count]);
-        // console.log(codeList);
-        // var myArr = JSON.parse(this.code);
-    })
+listCurrency.then(result => result.forEach(result => {
+    var option = document.createElement("option");
+    option.text = result.code;
+    option.classList = 'code';
+    x.add(option);
+})
 )
 // console.log(x.length);
 // var p = Promise.all([listCurrency]).then(function (values) {

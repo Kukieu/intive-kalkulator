@@ -84,7 +84,7 @@ function numberHandler(target) {
 
 function currencyHandler() {
     let currencyValue = document.getElementById("codeListSelect").value;
-    screen.value += ' ' + currencyValue + ' ';
+    screen.value += currencyValue + ' ';
 }
 
 let currencyCodeList = [];
@@ -119,22 +119,6 @@ function equalSignHandler(target) {
     //             indexes.push(i);
     //     return indexes;
     // 
-
-    for (let i = 0; i < equalSignArray.length; i++) {
-        if (equalSignArray[i].match(/[a-z]/i)) {
-            // screen.value += target.value;
-            // alert(JSON.stringify(convertCurrency(equalSignArray[i])));
-            let currencyReturnedCode = equalSignArray[i];
-            equalSignArray[i] = convertCurrency(currencyReturnedCode).then(function (result) {
-                // equalSignArray[i] = result.mid;
-                // console.log(equalSignArray[i]);
-                // return Promise.resolve(result.mid);
-                return Promise.all([convertCurrency]);
-            })
-            console.log(equalSignArray[i]);
-        }
-    }
-
 
     for (let j = 0; j < equalSignArray.length; j++) {
         if (equalSignArray.indexOf('^') !== -1) {
@@ -173,10 +157,71 @@ function equalSignHandler(target) {
 
 
 
-    console.log(equalSignArray);
+    // console.log(equalSignArray);
+
+    // for (let i = 0; i < equalSignArray.length; i++) {
+    //     if (equalSignArray[i].match(/[a-z]/i)) {
+    //         // screen.value += target.value;
+    //         // alert(JSON.stringify(convertCurrency(equalSignArray[i])));
+    //         let returnedValue;
+    //         let currencyReturnedCode = equalSignArray[i];
+    //         // convertCurrency(currencyReturnedCode).then(result => {
+    //         //     // equalSignArray[i] = result.mid;
+    //         //     return returnedValue = result.mid
+    //         // });
+    // convertCurrency(currencyReturnedCode).then(data => returnedValue = data.mid)
+    //     .then((returnedValue) => {
+    //         equalSignArray[i] = returnedValue;
+    //         equalSignArray[i + 1] = '*';
+    //         console.log(equalSignArray);
+    //     }).then((equalSignArray) => {
+    //         let result = equalSignArray.join(' ');
+    //         screen.value = eval(result);
+    //     });
+    //     }
+    // }
+
+    // equalSignArray[i] = convertCurrency(currencyReturnedCode).then(function (data) { data; });
+    // equalSignArray[i] = convertCurrency(currencyReturnedCode).then(function (result) {
+    // equalSignArray[i] = result.mid;
+    // console.log(returnedValue);
+    // setTimeout(() => {
+    // do you stuf here
+    // after the time you promise will be revolved or rejected
+    // if you need some of the values in here immediately out of settimeout
+    // might occur an error if promise wore not yet resolved or rejected
+    // console.log("returnedValue ", returnedValue);
+    //     equalSignArray[i] = returnedValue;
+    //     equalSignArray[i + 1] = '*';
+    //     console.log(equalSignArray);
+
+    // }, 100);
+
+    // return Promise.resolve(result.mid);
+    // resolve(result.mid);
+
+    //     Promise.resolve(true).then((result)=>return result);
+    //     console.log(m);
+    //     return Promise.all([result.mid]);
+    // })
+
+    for (let i = 0; i < equalSignArray.length; i++) {
+        if (equalSignArray[i].match(/[a-z]/i)) {
+            convertCurrency(equalSignArray[i]).then(data => returnedValue = data.mid)
+                .then((returnedValue) => {
+                    equalSignArray[i] = returnedValue + ' *';
+                    return equalSignArray;
+                }).then((equalSignArray) => {
+                    console.log(equalSignArray);
+                    let result = equalSignArray.join(' ');
+                    screen.value = eval(result);
+                });
+        }
+    }
+
+    // console.log(equalSignArray);
 
     let result = equalSignArray.join(' ');
-    // console.log(screen.value);
     screen.value = eval(result);
 
     // test = eval('7 7');

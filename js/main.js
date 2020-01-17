@@ -1,5 +1,5 @@
 const keys = document.querySelector('.calculator-keys');
-const production = 0;
+const production = 1;
 
 if (production === 0) {
     include('js/automaticTests.js', 'text/javascript');

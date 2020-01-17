@@ -118,18 +118,22 @@ function equalSignHandler(target) {
     //         if (arr[i] === val)
     //             indexes.push(i);
     //     return indexes;
-    // }
+    // 
+
     for (let i = 0; i < equalSignArray.length; i++) {
         if (equalSignArray[i].match(/[a-z]/i)) {
             // screen.value += target.value;
             // alert(JSON.stringify(convertCurrency(equalSignArray[i])));
-            let currencyReturnedCode = convertCurrency(equalSignArray[i]).then(function (result) {
-                console.log(result.mid);
-            });
-            console.log(currencyReturnedCode);
+            let currencyReturnedCode = equalSignArray[i];
+            equalSignArray[i] = convertCurrency(currencyReturnedCode).then(function (result) {
+                // equalSignArray[i] = result.mid;
+                // console.log(equalSignArray[i]);
+                // return Promise.resolve(result.mid);
+                return Promise.all([convertCurrency]);
+            })
+            console.log(equalSignArray[i]);
         }
     }
-
 
 
     for (let j = 0; j < equalSignArray.length; j++) {
@@ -166,6 +170,11 @@ function equalSignHandler(target) {
     // let test = -1 + 2 * (3 + 4) / 2 - 1;
     // let test = '- 1 + - 1';
     // console.log('test: ' + eval(test))
+
+
+
+    console.log(equalSignArray);
+
     let result = equalSignArray.join(' ');
     // console.log(screen.value);
     screen.value = eval(result);
@@ -187,7 +196,6 @@ function clearLastHandler() {
     // console.log(equalSignArray);
     screen.value = screenArray.join(' ');
 }
-
 // let dropdown = document.getElementById("codeListSelect");
 // sortSelectOptions(dropdown);
 // console.log(dropdown.options[2]);

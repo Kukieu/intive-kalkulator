@@ -29,6 +29,16 @@ function bracketHandler(target) {
     }
 }
 
+function powAndRootHandler(target) {
+    let inputArr = screen.value.split('');
+    const lastValue = inputArr[inputArr.length - 1];
+
+    if (screen.value === '' || lastValue === ' ') {
+        screen.value += target.value;
+    } else {
+        screen.value += ' ' + target.value + ' ';
+    }
+}
 
 function numberHandler(target) {
     let inputArr = screen.value.split('');
@@ -60,6 +70,24 @@ function equalSignHandler(target) {
     let equalSignArray = screen.value.split(' ');
 
     screen.value = '';
+
+    for (let j = 0; j < equalSignArray.length; j++) {
+        if (equalSignArray.indexOf('^') !== -1) {
+            let powerPosition = Number(equalSignArray.indexOf('^'));
+            equalSignArray[Number(equalSignArray.indexOf('^')) - 1] = Math.pow(equalSignArray[Number(equalSignArray.indexOf('^')) - 1], equalSignArray[Number(equalSignArray.indexOf('^')) + 1]);
+            equalSignArray.splice(powerPosition, 2);
+        }
+        if (equalSignArray.indexOf('√') !== -1) {
+            let rootsPosition = Number(equalSignArray.indexOf('√'));
+            if (equalSignArray[rootsPosition + 1] < 0) {
+                screen.value = 'Incorrect operation';
+                return;
+            } else {
+                equalSignArray[Number(equalSignArray.indexOf('√')) - 1] = Math.pow(equalSignArray[Number(equalSignArray.indexOf('√')) + 1], 1 / equalSignArray[Number(equalSignArray.indexOf('√')) - 1]);
+                equalSignArray.splice(rootsPosition, 2);
+            }
+        }
+    }
 
     let result = equalSignArray.join(' ');
     screen.value = eval(result);

@@ -25,6 +25,9 @@ keys.addEventListener('click', (event) => {
     else if (target.classList.contains('bracket')) {
         bracketHandler(target);
     }
+    else if (target.classList.contains('pow-and-root')) {
+        powAndRootHandler(target);
+    }
 })
 
 function include(filename, type) {

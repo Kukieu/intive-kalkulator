@@ -32,6 +32,14 @@ addTest('Sequence of Operations'
     , '1 + 2 * ( 3 + 4 ) / 2 - 1 ='
     , '7');
 
+addTest('Sequence of Operations with power 2'
+    , '3 power 2 + 2 power 3 ='
+    , '17');
+
+addTest('Sequence of Operations with power and roots'
+    , '( 4 power 2 + 2 power 3 - 2 roots 2 5 * ( 2 * 2 ) ) - 2 . 5 ='
+    , '1.5');
+
 function addTest(title, buttonPressed, expectedResult) {
     let buttonArray = buttonPressed.split(' ');
     for (let i = 0; i < buttonArray.length; i++) {

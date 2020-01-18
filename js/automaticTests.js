@@ -1,101 +1,54 @@
-for (let i = 0; i < 10; i++) {
-    document.getElementById(i).click();
-    if (document.getElementById('textarea').value === String(i)) {
-        console.log('✔ button ' + i + " test passed");
-    } else {
-        console.log('𝐗 button ' + i + " test failed");
+const calculatorResultScreen = document.getElementById('textarea');
+
+addTest('Adding'
+    , '8 + 2 ='
+    , '10');
+
+addTest('Subtracting'
+    , '8 - 2 ='
+    , '6');
+
+addTest('Multiplying'
+    , '8 * 2 ='
+    , '16');
+
+addTest('Dividing'
+    , '8 / 2 ='
+    , '4');
+
+addTest('float'
+    , '8 . 2 + 0 . 8 ='
+    , '9');
+
+addTest('clear-all'
+    , '( 4 2 + 2 3 - 2 5 2 * ( 2 * 2 ) ) - 2 . 5 clear-all'
+    , '');
+
+addTest('clear-last'
+    , '8 2 - 2 8 2 clear-last clear-last'
+    , '82');
+
+addTest('Sequence of Operations'
+    , '1 + 2 * ( 3 + 4 ) / 2 - 1 ='
+    , '7');
+
+addTest('Sequence of Operations with power 2'
+    , '3 power 2 + 2 power 3 ='
+    , '17');
+
+addTest('Sequence of Operations with power and roots'
+    , '( 4 power 2 + 2 power 3 - 2 roots 2 5 * ( 2 * 2 ) ) - 2 . 5 ='
+    , '1.5');
+
+function addTest(title, buttonPressed, expectedResult) {
+    let buttonArray = buttonPressed.split(' ');
+    for (let i = 0; i < buttonArray.length; i++) {
+        document.getElementById(buttonArray[i]).click();
     }
-    textareaReset();
-}
-
-textareaReset();
-
-document.getElementById(6).click();
-document.getElementById("*").click();
-document.getElementById(8).click();
-document.getElementById("=").click();
-if (document.getElementById('textarea').value === '48') {
-    console.log("✔ 'multiply' test passed");
-} else {
-    console.log("𝐗 'multiply' test failed");
-}
-
-textareaReset();
-
-document.getElementById(8).click();
-document.getElementById("/").click();
-document.getElementById(2).click();
-document.getElementById("=").click();
-if (document.getElementById('textarea').value === '4') {
-    console.log("✔ 'divide' test passed");
-} else {
-    console.log("𝐗 'divide' test failed");
-}
-
-textareaReset();
-
-document.getElementById(8).click();
-document.getElementById("+").click();
-document.getElementById(2).click();
-document.getElementById("=").click();
-if (document.getElementById('textarea').value === '10') {
-    console.log("✔ '+' test passed");
-} else {
-    console.log("𝐗 '+' test failed");
-}
-
-textareaReset();
-
-document.getElementById(8).click();
-document.getElementById("-").click();
-document.getElementById(2).click();
-document.getElementById("=").click();
-if (document.getElementById('textarea').value === '6') {
-    console.log("✔ '-' test passed");
-} else {
-    console.log("𝐗 '-' test failed");
-}
-
-textareaReset();
-
-document.getElementById(8).click();
-document.getElementById(".").click();
-document.getElementById(2).click();
-document.getElementById("+").click();
-document.getElementById(0).click();
-document.getElementById(".").click();
-document.getElementById(8).click();
-document.getElementById("=").click();
-if (document.getElementById('textarea').value === '9') {
-    console.log("✔ 'float' test passed");
-} else {
-    console.log("𝐗 'float' test failed");
-}
-
-textareaReset();
-
-document.getElementById(8).click();
-document.getElementById(2).click();
-document.getElementById("clear-all").click();
-if (document.getElementById('textarea').value === '') {
-    console.log("✔ 'clear-all' test passed");
-} else {
-    console.log("𝐗 'clear-all' test failed");
-}
-
-textareaReset();
-
-document.getElementById(8).click();
-document.getElementById(2).click();
-document.getElementById("clear-last").click();
-if (document.getElementById('textarea').value === '8') {
-    console.log("✔ 'clear-last' test passed");
-} else {
-    console.log("𝐗 'clear-last' test failed");
-}
-
-textareaReset();
-
-function textareaReset() {
-    document.getElementById('textarea').value = '';
+    if (calculatorResultScreen.value === expectedResult) {
+        console.log('✔ ' + title + " test passed");
+    } else {
+        console.log('𝐗 ' + title + " test failed");
+    }
+    clearAllHandler();
 }

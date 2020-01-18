@@ -60,6 +60,10 @@ function numberHandler(target) {
     }
 }
 
+function currencyHandler() {
+    let currencyValue = document.getElementById("codeListSelect").value;
+    screen.value += currencyValue + ' ';
+}
 
 function equalSignHandler(target) {
     let operationHistory = screen.value;
@@ -86,6 +90,19 @@ function equalSignHandler(target) {
                 equalSignArray[Number(equalSignArray.indexOf('√')) - 1] = Math.pow(equalSignArray[Number(equalSignArray.indexOf('√')) + 1], 1 / equalSignArray[Number(equalSignArray.indexOf('√')) - 1]);
                 equalSignArray.splice(rootsPosition, 2);
             }
+        }
+    }
+
+    for (let i = 0; i < equalSignArray.length; i++) {
+        if (typeof (equalSignArray[i]) !== 'number' && equalSignArray[i].match(/[a-z]/i)) {
+            convertCurrency(equalSignArray[i]).then(data => returnedValue = data.mid)
+                .then((returnedValue) => {
+                    equalSignArray[i] = returnedValue + ' *';
+                    return equalSignArray;
+                }).then((equalSignArray) => {
+                    let result = equalSignArray.join(' ');
+                    screen.value = eval(result);
+                });
         }
     }
 

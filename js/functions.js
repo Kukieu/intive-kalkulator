@@ -1,63 +1,79 @@
-let firstNumber = 0;
-let secondNumber = 0;
-let operator;
-let operationChosen = false;
+let screen = document.getElementById('textarea');
+let screenHistory = document.getElementById('textarea-history');
+const REoperator = /^([+]|[-]|[*]|[/]|[power]|[roots])$/g;
 
 function operatorHandler(target) {
-    operationChosen = true;
-    firstNumber = document.getElementById('textarea').value;
-    operator = target.value;
+    let inputArr = screen.value.split('');
+
+    const lastValue = inputArr[inputArr.length - 1];
+
+    if (screen.value === '' && target.value === '-') {
+        screen.value += target.value;
+    }
+
+    if (screen.value === '' || lastValue.match(REoperator) !== null || lastValue[lastValue.length - 1] === '.') {
+        return;
+    } else {
+        screen.value += ' ' + target.value + ' ';
+    }
 }
+
+function bracketHandler(target) {
+    let inputArr = screen.value.split('');
+    const lastValue = inputArr[inputArr.length - 1];
+
+    if (screen.value === '' || lastValue === ' ') {
+        screen.value += target.value;
+    } else {
+        screen.value += ' ' + target.value;
+    }
+}
+
 
 function numberHandler(target) {
-    if (operationChosen === false) {
-        document.getElementById('textarea').value += target.value;
-    } else {
-        operationChosen = false;
-        document.getElementById('textarea').value = '';
-        document.getElementById('textarea').value += target.value;
+    let inputArr = screen.value.split('');
+    const lastValue = inputArr[inputArr.length - 1];
+
+    if (lastValue === '-') {
+        screen.value += target.value;
+        return;
     }
-    checkForDot();
+
+    if (target.value === '.' && lastValue === '.') {
+        return;
+    }
+
+    if (lastValue === '(') {
+        screen.value += ' ' + target.value;
+    } else {
+        screen.value += target.value;
+    }
 }
 
-function equalSignHandler() {
-    secondNumber = document.getElementById('textarea').value;
 
-    switch (operator) {
-        case '+':
-            document.getElementById('textarea').value = Number(firstNumber) + Number(secondNumber);
-            break;
-        case '-':
-            document.getElementById('textarea').value = Number(firstNumber) - Number(secondNumber);
-            break;
-        case '*':
-            document.getElementById('textarea').value = Number(firstNumber) * Number(secondNumber);
-            break;
-        case '/':
-            document.getElementById('textarea').value = Number(firstNumber) / Number(secondNumber);
-            break;
-        default:
-            alert('ERROR - something went wrong');
-    }
-    checkForDot();
+function equalSignHandler(target) {
+    let operationHistory = screen.value;
+
+    screenHistory.value = '';
+    screenHistory.value = operationHistory;
+
+    let equalSignArray = screen.value.split(' ');
+
+    screen.value = '';
+
+    let result = equalSignArray.join(' ');
+    screen.value = eval(result);
 }
 
 function clearAllHandler() {
-    document.getElementById('textarea').value = '';
-    document.getElementById('.').disabled = false;
+    screen.value = '';
+    screenHistory.value = '';
+    equalSignArray = [];
+    inputArr = [];
 }
 
 function clearLastHandler() {
-    let textareaValue = document.getElementById('textarea').value;
-    let newValue = textareaValue.slice(0, textareaValue.length - 1);
-    document.getElementById('textarea').value = newValue;
-    checkForDot();
-}
-
-function checkForDot() {
-    if (document.getElementById('textarea').value.includes('.')) {
-        document.getElementById('.').disabled = true;
-    } else {
-        document.getElementById('.').disabled = false;
-    }
+    let screenArray = screen.value.split(' ');
+    screenArray.pop();
+    screen.value = screenArray.join(' ');
 }
